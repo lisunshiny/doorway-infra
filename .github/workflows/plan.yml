@@ -1,33 +1,37 @@
-name: Create terraform plan
+# TODO: Add secrets file and then re-enable. See
+# https://github.com/lisunshiny/doorway-infra/pull/3#issuecomment-1441076790
+# for screenshot of what happens when this workflow runs.
 
-on:
-  # Trigger the workflow on pull request,
-  # but only for the main branch
-  pull_request:
-    branches:
-      - main
+# name: Create terraform plan
 
-permissions:
-  contents: read
-  pull-requests: write
+# on:
+#   # Trigger the workflow on pull request,
+#   # but only for the main branch
+#   pull_request:
+#     branches:
+#       - main
 
-jobs:
-  plan-bloom-instance:
-    defaults:
-      run:
-        working-directory: ./bloom-instance
+# permissions:
+#   contents: read
+#   pull-requests: write
 
-    runs-on: ubuntu-latest
-    name: Create a plan for an example terraform configuration
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+# jobs:
+#   plan-bloom-instance:
+#     defaults:
+#       run:
+#         working-directory: ./bloom-instance
 
-      - name: terraform plan
-        uses: dflook/terraform-plan@v1
-        with:
-          path: bloom-instance
-          var_file: |
-            tfvars.template
-          add_github_comment: false
-          workspace: ci
+#     runs-on: ubuntu-latest
+#     name: Create a plan for an example terraform configuration
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v3
+
+#       - name: terraform plan
+#         uses: dflook/terraform-plan@v1
+#         with:
+#           path: bloom-instance
+#           var_file: |
+#             tfvars.template
+#           add_github_comment: false
+#           workspace: ci
