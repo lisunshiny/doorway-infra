@@ -26,6 +26,7 @@ jobs:
       - name: terraform plan
         uses: dflook/terraform-plan@v1
         with:
+          path: bloom-instance
           var_file: |
             tfvars.template
           add_github_comment: false
